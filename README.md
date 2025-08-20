@@ -1,78 +1,89 @@
-# analise-de-churn
-Projeto de análise de churn com recomendações de ações em CX e CS.
+# Introdução
+Este projeto é uma análise de dados completa para a prevenção de churn. A partir de um dataset de telecom, foi construído um modelo preditivo capaz de identificar clientes em risco e fornecer insights acionáveis para as equipes de CX e CS.
 
-# Resumo do problema (o “briefing”).
-A empresa em questão pertence ao ramo de telecomunicação do Irã. O Dataset foi disponibilizado publicamente na comunidade de análise de dados e machine learning Kaggle.
-
-# Objetivos da análise (hipóteses ou perguntas de negócio).
+# Resumo do problema & Objetivos da análise.
 Temos como objetivo compreender os principais fatores que influenciam o churn e desenvolver um modelo preditivo interpretável capaz de estimar a probabilidade de cancelamento a partir de variáveis históricas e comportamentais.A base de dados utilizada é proveniente de uma empresa de telecomunicações iraniana, disponibilizada publicamente na comunidade de Machine Learning Kaggle para fins de experimentação e estudo, sendo amplamente utilizada em grupos de análise de dados e machine learning para testes e demonstrações de metodologias analíticas.
 
 # Descrição do dataset (origem, variáveis, limitações).
-O dataset foi encontrado primeiro no site Kaggle (https://www.kaggle.com/datasets/alinoranianesfahani/iranian-churn-dataset) 
-Após ser o processo de limpeza, sofreu algumas alterações para uma "atualização" na nomenclatura de algumas colunas do dataset para que melhor refletisse a realidade atual das telecoms, resultando no dataset (telecom_churn_clean.csv).
+O dataset tem origem do site Kaggle (https://www.kaggle.com/datasets/alinoranianesfahani/iranian-churn-dataset) 
+Após o processo de limpeza, foi realizado uma "atualização" nas nomenclaturas de algumas colunas do dataset para que melhor refletisse a realidade atual das telecoms, resultando no dataset (telecom_churn_clean.csv).
 
-"Call Failure": "failed_interactions",
+"Call Failure" > "failed_interactions",
 
-"Complains": "support_complaints",
+"Complains" > "support_complaints",
 
-"Subscription Length": "tenure_months",
+"Subscription Length" > "tenure_months",
 
-"Charge Amount": "monthly_spend",
+"Charge Amount" > "monthly_spend",
 
-"Seconds of Use": "usage_time_min",   # converter p/ minutos
+"Seconds of Use" > "usage_time_min",   # converter p/ minutos
 
-"Frequency of use": "active_days_per_month",
+"Frequency of use" > "active_days_per_month",
 
-"Frequency of SMS": "app_notifications_freq",
+"Frequency of SMS" > "app_notifications_freq",
 
-"Distinct Called Numbers": "unique_interactions"
+"Distinct Called Numbers" > "unique_interactions"
 
-"Age Group": "age_group",
+"Age Group" > "age_group",
 
-"Tariff Plan": "plan_type",
+"Tariff Plan" > "plan_type",
 
-"Status": "subscription_status",
+"Status" > "subscription_status",
 
-"Age": "customer_age",
+"Age" > "customer_age",
 
-"Customer Value": "clv",
+"Customer Value" > "clv",
 
-"Churn": "churn",
+"Churn" > "churn",
 
 
 # Processo de limpeza.
-O processo iniciou com a importação de bibliotecas pandas e numpy, leitura de CVS, padronização de colunas removendo espaços duplicados e espaços no início/fim. Também mapeamos e renomeação de colunas para nomes padronizados (ex acima), conversão de valores numéricos, conversão de segundos para minutos, tratamento de colunas categóricas e criação de mapa etário (18-24, 25-34, etc). Churn se tornou uma categoria binária (0 ou 1), e por fim, antes de exportar uma última versão de (telecom_churn_clean.csv), realizamos um último Sanity Check.
+
+- Importação de bibliotecas (pandas, numpy).
+
+- Leitura do CSV e padronização das colunas.
+
+- Mapeamento e renomeação de colunas para nomes mais claros.
+
+- Conversão de tipos de dados (por exemplo, segundos para minutos).
+
+- Tratamento de colunas categóricas e criação de grupos etários.
+
+- Sanity Check e exportação da versão final do dataset.
 
 # Principais análises.
 CHURN SILENCIOSO: Churn acontece ao longo de falhas de interações, porém ainda apresenta um pico significativo logo no início onde ainda não há interação, demonstrando um "churn silencioso".
 
-
-<img width="440" height="249" alt="image" src="https://github.com/user-attachments/assets/561df5b0-2bc0-4c3c-8f78-c7f27478f19d" />
+<img src="/images/failed_interactions.png" alt="Gráfico de Interações com Falha" width="440">
 
 
 CLIENTES DE BAIXO VALOR: Nos dois gráficos abaixo podemos observar que o churn ocorre mais com Clientes de baixo valor para o negócio.
 
 
-<img width="440" height="249" alt="image" src="https://github.com/user-attachments/assets/8269a4ca-57d3-4e89-8539-0beef345187c" />
-<img width="440" height="249" alt="image" src="https://github.com/user-attachments/assets/83b3af81-959d-48f0-8e87-a14b5dcbcc3e" />
+<img src="images/monthly_spend.png" alt="Churn por gasto mensal" width="440">
+<img src="images/clv.png" alt="Churn por Lifetime Value" width="440">
 
 
 BAIXO ENGAJAMENTO: Além de não registrarem (failed_interactions), a maioria dos clientes "churners" também se concentram entre os menos ativos.
 
 
-<img width="440" height="249" alt="image" src="https://github.com/user-attachments/assets/840ee029-ed74-4b42-b0a5-1c3edc272579" />
-<img width="440" height="249" alt="image" src="https://github.com/user-attachments/assets/2dc2321b-739b-4f1a-8791-ed01d8b63f1f" />
+<img src="images/active_days_per_month.png" alt="Churn por tempo ativo" width="440">
+<img src="images/usage_time_min.png" alt="Churn po tempo de uso" width="440">
 
 
-CLISE DE FIDELIDADE: A descoberta mais grave da análise exploratória foi o grande volume de churn concentrado em clientes de longo prazo, algo que até então parecia ser um problema reservado a novos clientes. Essa informação é mais preocupante pois sugere uma possível erosão do valor do produto, algo para ser investigado com muita atenção. O segundo gráfico desta sessão também aponta o quanto 
+CLISE DE FIDELIDADE: A descoberta mais grave da análise exploratória foi o grande volume de churn concentrado em clientes de longo prazo, algo que até então parecia ser um problema reservado a novos clientes. Essa informação é mais preocupante pois sugere uma possível erosão do valor do produto, algo para ser investigado com muita atenção.
 
 
-<img width="440" height="249" alt="image" src="https://github.com/user-attachments/assets/92a3d04d-70ec-4d3f-b328-e87cdad7451d" />
-<img width="440" height="249" alt="image" src="https://github.com/user-attachments/assets/05e4b549-2e2e-455b-943b-b717a222a837" />
+<img src="images/Distribuição-churn-por-tempo-assinatura.png" alt="Distribuição de churn por tempo de assinatura" width="440">
+<img src="images/tenure_months.png" alt="Churn por tempo de assinatura" width="440">
+<img src="images/media-failed-interactions-por-grupo-e-churn.png" alt="Media de failed_interactions por grupo de tempo de assinatura e churn" width="440">
 
 
 # Modelos aplicados (regressão, árvore, clustering).
 REGRESSÃO LOGÍSTICA: O primeiro modelo que realizamos na análise foi o da regressão logística e com dois reajustes para refinamento, ele passou a apresentar os resultados abaixo.
+
+<img src="/imagesMatriz_de_confusão.png" alt="Matriz de confusão" width="440">
+<img src="/images/Curva-Roc.png" alt="curva roc" width="440">
 
 === Métricas — Modelo Refinado (LogReg) ===
 
@@ -96,14 +107,28 @@ F1-score : 0.601
 
 O F1-score sinaliza o balanço entre precisão e recall em um único número. Um F1-score de 0.637 mostra um bom balanço, indicando que o modelo é confiável tanto para identificar clientes em risco quanto para evitar falsos alarmes.
 
+---
 
-<img width="440" height="372" alt="download" src="https://github.com/user-attachments/assets/28fed273-3215-439e-a544-bc4e168cf6d1" />
-<img width="367,96" height="372" alt="download" src="https://github.com/user-attachments/assets/8f771115-55ec-4e33-bda7-ed5ef6aab54f" />
+ARVORE DE DECISÕES: Rodamos uma segunda opção de modelo para comparar performance entre os dois, e por fim, optamos pela arvore de decisões uma vez que o modelo de regressão falha em identificar um número muito grande de clientes em risco (Recall 48%). A Árvore de Decisão, por outro lado, nos permite capturar a maior quantidade de clientes que realmente darão churn (Recall 61%), garantindo que o time de Sucesso do Cliente possa intervir onde realmente importa.
 
+Precision: 0.81
 
+Recall   : 0.61
 
+F1-score : 0.69
 
+<img src="/images/Arvore-de-decisão.svg" alt="Árvore de Decisão do Modelo de Churn" width="600">
 
-# Resultados e insights (com gráficos finais).
+# Conclusão + recomendações práticas.
 
-💡 **Conclusão + recomendações práticas**.
+O projeto de análise e modelagem de churn transformou um desafio de negócio em uma oportunidade estratégica para a empresa. Por meio de uma análise exploratoria completa, identificamos os principais fatores que influenciam o cancelamento de clientes, como o baixo engajamento e a "crise de fidelidade" entre clientes de longa data.
+
+A Modelagem Preditiva com a Árvore de Decisão não apenas validou esses insights, mas também forneceu um mapa de risco claro, traduzindo a matemática em regras de negócio acionáveis. Com base neste trabalho, as seguintes recomendações são propostas para transformar os insights em valor real e mensurável:
+
+- Implementação de um Score de Risco Automatizado: O modelo de Regressão Logística refinado, com uma precisão de 81% e um recall de 48%, pode ser implementado para gerar um score de risco de churn para cada cliente. Este score deve ser integrado a uma ferramenta de gestão de clientes (CRM), permitindo que o time de Sucesso do Cliente priorize seus esforços e seja proativo na retenção.
+
+- Criação de Estratégias de Retenção Segmentadas: Com base nas regras da Árvore de Decisão, o time de Sucesso do Cliente pode criar estratégias direcionadas. Por exemplo, clientes com (support_complaints) e baixo (usage_time_min) devem receber uma abordagem personalizada para entender e resolver suas dores, enquanto clientes de longo prazo que começam a registrar failed_interactions podem ser abordados com ofertas ou benefícios especiais para reafirmar o seu valor para a empresa.
+
+- Monitoramento Contínuo e Retreinamento do Modelo: O modelo não é uma solução estática. É fundamental que sua performance seja monitorada continuamente, e que ele seja retreinado periodicamente (por exemplo, a cada 6 meses) com dados mais recentes. Este processo de melhoria contínua garantirá que o modelo se adapte às mudanças de comportamento do cliente e mantenha sua precisão ao longo do tempo.
+
+Com essas recomendações, o modelo preditivo se torna uma ferramenta poderosa e um ativo estratégico para a empresa, movendo a equipe de uma abordagem reativa para uma abordagem proativa e focada na retenção.
