@@ -82,7 +82,7 @@ CLISE DE FIDELIDADE: A descoberta mais grave da análise exploratória foi o gra
 # Modelos aplicados (regressão, árvore, clustering).
 REGRESSÃO LOGÍSTICA: O primeiro modelo que realizamos na análise foi o da regressão logística e com dois reajustes para refinamento, ele passou a apresentar os resultados abaixo.
 
-<img src="/imagesMatriz_de_confusão.png" alt="Matriz de confusão" width="440">
+<img src="/images/Matriz_de_confusão.png" alt="Matriz de confusão" width="440">
 <img src="/images/Curva-Roc.png" alt="curva roc" width="440">
 
 === Métricas — Modelo Refinado (LogReg) ===
