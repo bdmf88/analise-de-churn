@@ -74,7 +74,6 @@ BAIXO ENGAJAMENTO: Além de não registrarem (failed_interactions), a maioria do
 CLISE DE FIDELIDADE: A descoberta mais grave da análise exploratória foi o grande volume de churn concentrado em clientes de longo prazo, algo que até então parecia ser um problema reservado a novos clientes. Essa informação é mais preocupante pois sugere uma possível erosão do valor do produto, algo para ser investigado com muita atenção.
 
 
-<img src="images/Distribuição-churn-por-tempo-assinatura.png" alt="Distribuição de churn por tempo de assinatura" width="440">
 <img src="images/tenure_months.png" alt="Churn por tempo de assinatura" width="440">
 <img src="images/media-failed-interactions-por-grupo-e-churn.png" alt="Media de failed_interactions por grupo de tempo de assinatura e churn" width="440">
 
