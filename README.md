@@ -78,7 +78,7 @@ CLISE DE FIDELIDADE: A descoberta mais grave da análise exploratória foi o gra
 <img src="images/media-failed-interactions-por-grupo-e-churn.png" alt="Media de failed_interactions por grupo de tempo de assinatura e churn" width="440">
 
 
-# Modelos aplicados (regressão, árvore, clustering).
+# Modelos aplicados (regressão & árvore).
 REGRESSÃO LOGÍSTICA: O primeiro modelo que realizamos na análise foi o da regressão logística e com dois reajustes para refinamento, ele passou a apresentar os resultados abaixo.
 
 <img src="/images/Matriz_de_confusão.png" alt="Matriz de confusão" width="440">
@@ -88,15 +88,15 @@ REGRESSÃO LOGÍSTICA: O primeiro modelo que realizamos na análise foi o da reg
 
 Accuracy : 0.901
 
-A acurácia mostra a performance geral do modelo, ou seja, a porcentagem de previsões que ele acertou no total. Um valor de 89% é um ótimo positivo para a previsão.
+A acurácia mostra a performance geral do modelo, ou seja, a porcentagem de previsões que ele acertou no total. Um valor de 90% é um ótimo positivo para a previsão.
 
 Precision: 0.81
 
-A precisão responde à pergunta: "Dos clientes que o modelo previu como Churn, quantos realmente deram churn?". Um valor de 69% é sólido e significa que, para cada 10 clientes sinalizados como de risco, cerca de 7 realmente estão em alto risco.
+A precisão responde à pergunta: "Dos clientes que o modelo previu como Churn, quantos realmente deram churn?". Um valor de 81% é sólido e significa que, para cada 10 clientes sinalizados como de risco, cerca de 7 realmente estão em alto risco.
 
 Recall   : 0.478
 
-O recall responde à pergunta: "De todos os clientes que realmente deram churn, quantos o modelo conseguiu identificar?". Um recall de 59% indica que o modelo é capaz de "pegar" a maioria dos clientes que estão prestes a cancelar.
+O recall responde à pergunta: "De todos os clientes que realmente deram churn, quantos o modelo conseguiu identificar?". Um recall de 48% indica que o modelo é capaz de "pegar" a maioria dos clientes que estão prestes a cancelar.
 
 AUC-ROC  : 0.935
 
@@ -104,7 +104,7 @@ A área sob a curva (AUC-ROC) é uma das melhores métricas para avaliar modelos
 
 F1-score : 0.601
 
-O F1-score sinaliza o balanço entre precisão e recall em um único número. Um F1-score de 0.637 mostra um bom balanço, indicando que o modelo é confiável tanto para identificar clientes em risco quanto para evitar falsos alarmes.
+O F1-score sinaliza o balanço entre precisão e recall em um único número. Um F1-score de 0.601 mostra um bom balanço, indicando que o modelo é confiável tanto para identificar clientes em risco quanto para evitar falsos alarmes.
 
 ---
 
@@ -118,13 +118,21 @@ F1-score : 0.69
 
 <img src="/images/Arvore-de-decisão.svg" alt="Árvore de Decisão do Modelo de Churn" width="600">
 
+### Comparação entre modelos
+
+| Modelo              | Acurácia | Precisão | Recall | F1-score | AUC-ROC |
+|---------------------|----------|----------|--------|----------|---------|
+| Regressão Logística | 90%      | 81%      | 48%    | 0.60     | 0.93    |
+| Árvore de Decisão   | 85%      | 81%      | 61%    | 0.69     | -       |
+
+
 # Conclusão + recomendações práticas.
 
 O projeto de análise e modelagem de churn transformou um desafio de negócio em uma oportunidade estratégica para a empresa. Por meio de uma análise exploratoria completa, identificamos os principais fatores que influenciam o cancelamento de clientes, como o baixo engajamento e a "crise de fidelidade" entre clientes de longa data.
 
 A Modelagem Preditiva com a Árvore de Decisão não apenas validou esses insights, mas também forneceu um mapa de risco claro, traduzindo a matemática em regras de negócio acionáveis. Com base neste trabalho, as seguintes recomendações são propostas para transformar os insights em valor real e mensurável:
 
-- Implementação de um Score de Risco Automatizado: O modelo de Regressão Logística refinado, com uma precisão de 81% e um recall de 48%, pode ser implementado para gerar um score de risco de churn para cada cliente. Este score deve ser integrado a uma ferramenta de gestão de clientes (CRM), permitindo que o time de Sucesso do Cliente priorize seus esforços e seja proativo na retenção.
+- Implementação de um Score de Risco Automatizado: A Árvore de Decisão, com recall de 61%, deve ser utilizada como modelo principal para identificar clientes em risco. Além do score probabilístico, suas regras permitem criar alertas automáticos no CRM e segmentar ações de retenção de forma direta e transparente.
 
 - Criação de Estratégias de Retenção Segmentadas: Com base nas regras da Árvore de Decisão, o time de Sucesso do Cliente pode criar estratégias direcionadas. Por exemplo, clientes com (support_complaints) e baixo (usage_time_min) devem receber uma abordagem personalizada para entender e resolver suas dores, enquanto clientes de longo prazo que começam a registrar failed_interactions podem ser abordados com ofertas ou benefícios especiais para reafirmar o seu valor para a empresa.
 
