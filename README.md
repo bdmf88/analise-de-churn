@@ -120,14 +120,16 @@ F1-score : 0.69
 
 # Conclusão + recomendações práticas.
 
-O projeto de análise e modelagem de churn transformou um desafio de negócio em uma oportunidade estratégica para a empresa. Por meio de uma análise exploratoria completa, identificamos os principais fatores que influenciam o cancelamento de clientes, como o baixo engajamento e a "crise de fidelidade" entre clientes de longa data.
+O projeto de análise e modelagem de churn transformou um desafio de negócio em uma oportunidade estratégica para a empresa. Por meio de uma análise exploratória completa, identificamos os principais fatores que influenciam o cancelamento de clientes, como o baixo engajamento e a "crise de fidelidade" entre clientes de longa data.
 
-A Modelagem Preditiva com a Árvore de Decisão não apenas validou esses insights, mas também forneceu um mapa de risco claro, traduzindo a matemática em regras de negócio acionáveis. Com base neste trabalho, as seguintes recomendações são propostas para transformar os insights em valor real e mensurável:
+A modelagem preditiva com a Árvore de Decisão validou esses insights e forneceu um mapa de risco claro, traduzindo a matemática em regras de negócio acionáveis. Já a Regressão Logística se mostrou útil como baseline comparativo, gerando um score probabilístico contínuo que complementa a visão da árvore. Em conjunto, os dois modelos cumprem papéis distintos e complementares: a Regressão Logística apoia na priorização de clientes em risco por meio de um ranking de probabilidade, enquanto a Árvore de Decisão orienta quais ações tomar para cada perfil de cliente em risco.
 
-- Implementação de um Score de Risco Automatizado: A Árvore de Decisão, com recall de 61%, deve ser utilizada como modelo principal para identificar clientes em risco. Além do score probabilístico, suas regras permitem criar alertas automáticos no CRM e segmentar ações de retenção de forma direta e transparente.
+Com base nesse trabalho, as seguintes recomendações são propostas para transformar os insights em valor real e mensurável:
 
-- Criação de Estratégias de Retenção Segmentadas: Com base nas regras da Árvore de Decisão, o time de Sucesso do Cliente pode criar estratégias direcionadas. Por exemplo, clientes com (support_complaints) e baixo (usage_time_min) devem receber uma abordagem personalizada para entender e resolver suas dores, enquanto clientes de longo prazo que começam a registrar failed_interactions podem ser abordados com ofertas ou benefícios especiais para reafirmar o seu valor para a empresa.
+- Implementação de um Score de Risco Automatizado: A Regra de decisão combinada ao score da Regressão Logística deve ser utilizada no CRM. O score contínuo da regressão permite priorizar os clientes em maior risco, enquanto as regras interpretáveis da árvore orientam como agir em cada segmento (ex.: veteranos insatisfeitos vs. novatos com baixo uso).
 
-- Monitoramento Contínuo e Retreinamento do Modelo: O modelo não é uma solução estática. É fundamental que sua performance seja monitorada continuamente, e que ele seja retreinado periodicamente (por exemplo, a cada 6 meses) com dados mais recentes. Este processo de melhoria contínua garantirá que o modelo se adapte às mudanças de comportamento do cliente e mantenha sua precisão ao longo do tempo.
+- Criação de Estratégias de Retenção Segmentadas: Com base nas regras da Árvore de Decisão, o time de Sucesso do Cliente pode criar abordagens direcionadas. Por exemplo, clientes com support_complaints e baixo usage_time_min devem receber contato personalizado para resolver suas dores, enquanto clientes de longo prazo que registram failed_interactions podem ser alvo de benefícios especiais para reafirmar o valor da empresa.
 
-Com essas recomendações, o modelo preditivo se torna uma ferramenta poderosa e um ativo estratégico para a empresa, movendo a equipe de uma abordagem reativa para uma abordagem proativa e focada na retenção.
+- Monitoramento Contínuo e Retreinamento do Modelo: Os modelos não são soluções estáticas. É fundamental que sua performance seja monitorada continuamente e que ambos sejam retreinados periodicamente (por exemplo, a cada 6 meses) com dados mais recentes. Esse processo garante adaptação às mudanças de comportamento do cliente e manutenção da eficácia ao longo do tempo.
+
+Com essas recomendações, os modelos preditivos deixam de ser apenas uma ferramenta analítica e passam a atuar como ativos estratégicos, movendo a empresa de uma abordagem reativa para uma gestão proativa e inteligente da retenção de clientes.
