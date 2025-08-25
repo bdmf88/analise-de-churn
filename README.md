@@ -107,9 +107,7 @@ Precision: 0.81
 Recall   : 0.61
 
 F1-score : 0.69
-
 <img src="/images/Arvore-de-decisão.svg" alt="Árvore de Decisão do Modelo de Churn" width="600">
-
 ### Comparação entre modelos
 
 | Modelo              | Acurácia | Precisão | Recall | F1-score | AUC-ROC |
