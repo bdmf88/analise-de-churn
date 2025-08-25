@@ -126,7 +126,7 @@ Com base nesse trabalho, as seguintes recomendações são propostas para transf
 
 - Implementação de um Score de Risco Automatizado: A Regra de decisão combinada ao score da Regressão Logística deve ser utilizada no CRM. O score contínuo da regressão permite priorizar os clientes em maior risco, enquanto as regras interpretáveis da árvore orientam como agir em cada segmento (ex.: veteranos insatisfeitos vs. novatos com baixo uso).
 
-- Criação de Estratégias de Retenção Segmentadas: Com base nas regras da Árvore de Decisão, o time de Sucesso do Cliente pode criar abordagens direcionadas. Por exemplo, clientes com support_complaints e baixo usage_time_min devem receber contato personalizado para resolver suas dores, enquanto clientes de longo prazo que registram failed_interactions podem ser alvo de benefícios especiais para reafirmar o valor da empresa.
+- Criação de Estratégias de Retenção Segmentadas: Com base nas regras da Árvore de Decisão, o time de Sucesso do Cliente pode criar abordagens direcionadas. Por exemplo, clientes com (support_complaints) e baixo (usage_time_min) devem receber contato personalizado para resolver suas dores, enquanto clientes de longo prazo que registram failed_interactions podem ser alvo de benefícios especiais para reafirmar o valor da empresa.
 
 - Monitoramento Contínuo e Retreinamento do Modelo: Os modelos não são soluções estáticas. É fundamental que sua performance seja monitorada continuamente e que ambos sejam retreinados periodicamente (por exemplo, a cada 6 meses) com dados mais recentes. Esse processo garante adaptação às mudanças de comportamento do cliente e manutenção da eficácia ao longo do tempo.
 
