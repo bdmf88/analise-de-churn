@@ -8,33 +8,25 @@ Temos como objetivo compreender os principais fatores que influenciam o churn e 
 O dataset tem origem do site Kaggle (https://www.kaggle.com/datasets/alinoranianesfahani/iranian-churn-dataset) 
 Após o processo de limpeza, foi realizado uma "atualização" nas nomenclaturas de algumas colunas do dataset para que melhor refletisse a realidade atual das telecoms, resultando no dataset (telecom_churn_clean.csv).
 
-"Call Failure" > "failed_interactions",
+### Mapeamento de variáveis (nomes originais → nomes padronizados)
 
-"Complains" > "support_complaints",
+| Variável original       | Variável padronizada     | Observação                          |
+|-------------------------|--------------------------|-------------------------------------|
+| Call Failure            | failed_interactions      |                                     |
+| Complains               | support_complaints       |                                     |
+| Subscription Length     | tenure_months            |                                     |
+| Charge Amount           | monthly_spend            |                                     |
+| Seconds of Use          | usage_time_min           | Conversão de segundos → minutos     |
+| Frequency of use        | active_days_per_month    |                                     |
+| Frequency of SMS        | app_notifications_freq   |                                     |
+| Distinct Called Numbers | unique_interactions      |                                     |
+| Age Group               | age_group                |                                     |
+| Tariff Plan             | plan_type                |                                     |
+| Status                  | subscription_status      |                                     |
+| Age                     | customer_age             |                                     |
+| Customer Value          | clv                      | Customer Lifetime Value (CLV)       |
+| Churn                   | churn                    | Variável target                     |
 
-"Subscription Length" > "tenure_months",
-
-"Charge Amount" > "monthly_spend",
-
-"Seconds of Use" > "usage_time_min",   # converter p/ minutos
-
-"Frequency of use" > "active_days_per_month",
-
-"Frequency of SMS" > "app_notifications_freq",
-
-"Distinct Called Numbers" > "unique_interactions"
-
-"Age Group" > "age_group",
-
-"Tariff Plan" > "plan_type",
-
-"Status" > "subscription_status",
-
-"Age" > "customer_age",
-
-"Customer Value" > "clv",
-
-"Churn" > "churn",
 
 
 # Processo de limpeza.
