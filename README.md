@@ -43,6 +43,22 @@ Após o processo de limpeza, foi realizado uma "atualização" nas nomenclaturas
 
 - Sanity Check e exportação da versão final do dataset.
 
+# Requirements
+
+- pandas
+
+- numpy
+
+- matplotlib
+
+- seaborn
+
+- scikit-learn
+
+- graphviz
+
+- pydotplus
+
 # Principais análises.
 CHURN SILENCIOSO: Churn acontece ao longo de falhas de interações, porém ainda apresenta um pico significativo logo no início onde ainda não há interação, demonstrando um "churn silencioso".
 
